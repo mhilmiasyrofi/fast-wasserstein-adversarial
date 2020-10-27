@@ -5,6 +5,8 @@ import torchvision
 
 from resnet import ResNet18
 
+from models import *
+
 
 class Flatten(nn.Module):
     def forward(self, x):
@@ -37,12 +39,22 @@ def str2model(path, dataset=None, pretrained=True):
             load_model(net, path)
 
     elif dataset == "cifar":
-        net = ResNet18()
+#         net = ResNet18()
 
-        if pretrained:
-            load_model(net, path)
+#         if pretrained:
+#             load_model(net, path)
+        model = "densenet121"
+        net = resnet18(pretrained=True)
+        if model == "vgg16bn" :
+            net = vgg16_bn(pretrained=True)
+        elif model == "densenet121" :
+            net = densenet121(pretrained=True)
+        elif model == "googlenet" :
+            net = googlenet(pretrained=True)
+        elif model == "inceptionv3" :
+            net = inception_v3(pretrained=True)
 
-    elif dataset == "imagenet":
+    elif dataset == "imagenet":    
         assert pretrained
         net = torchvision.models.resnet50(pretrained=True)
 

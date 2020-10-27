@@ -139,7 +139,7 @@ if __name__ == "__main__":
 
     set_seed(args.seed)
 
-    testset, normalize, unnormalize = str2dataset(args.dataset)
+    testset, normalize, unnormalize = str2dataset(args.dataset, train=True)
     testloader = torch.utils.data.DataLoader(testset, batch_size=args.batch_size, shuffle=False, num_workers=0)
 
     net = str2model(args.checkpoint, dataset=args.dataset, pretrained=True).eval().to(device)
