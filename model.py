@@ -43,20 +43,20 @@ def str2model(path, dataset=None, pretrained=True):
 
 #         if pretrained:
 #             load_model(net, path)
-        model = "densenet121"
-        net = resnet18(pretrained=True)
+        model = "resnet18"
+        net = resnet18(pretrained=pretrained)
         if model == "vgg16bn" :
-            net = vgg16_bn(pretrained=True)
+            net = vgg16_bn(pretrained=pretrained)
         elif model == "densenet121" :
-            net = densenet121(pretrained=True)
+            net = densenet121(pretrained=pretrained)
         elif model == "googlenet" :
-            net = googlenet(pretrained=True)
+            net = googlenet(pretrained=pretrained)
         elif model == "inceptionv3" :
-            net = inception_v3(pretrained=True)
+            net = inception_v3(pretrained=pretrained)
 
     elif dataset == "imagenet":    
         assert pretrained
-        net = torchvision.models.resnet50(pretrained=True)
+        net = torchvision.models.resnet50(pretrained=pretrained)
 
     else:
         assert 0
